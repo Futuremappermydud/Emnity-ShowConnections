@@ -1,5 +1,5 @@
 import { get } from "enmity/api/settings";
-import { View, Text, TouchableOpacity } from "enmity/components";
+import { View, Text, TouchableOpacity, Image } from "enmity/components";
 import { Constants, React, StyleSheet, Toasts } from "enmity/metro/common";
 import { getByName, getByProps } from "enmity/metro";
 import { Account } from "enmity/common";    
@@ -63,9 +63,9 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
     const url = platform.getPlatformUserUrl?.(connection);
 
     const img = (
-        <img
-            aria-label={connection.name}
-            src={userTheme === "light" ? platform.icon.lightSVG : platform.icon.darkSVG}
+        <Image
+            accessibilityLabel={connection.name}
+            source={userTheme === "light" ? platform.icon.lightSVG : platform.icon.darkSVG}
             style={{
                 width: get(manifest.name, 'iconSize', 32),
                 height: get(manifest.name, 'iconSize', 32)
