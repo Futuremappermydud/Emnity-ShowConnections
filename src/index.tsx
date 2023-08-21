@@ -23,8 +23,7 @@ const ShowConnections: Plugin = {
 
          const userProfileTheme = findInReactTree(res, r => 
          {
-            console.log(r?.type?.name + " " + r?.type?.displayName);
-            return r?.type?.displayName === "ThemeContextProvider";
+            return r?.type?.name === "ThemeContextProvider";
          }
         )?.props?.children
 
