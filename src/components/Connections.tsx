@@ -67,7 +67,7 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
                     {
                         width: 32,
                         height: 32,
-                        opacity: pressed ? .6 : 1
+                        backgroundColor: `rgba(0, 0, 0, ${pressed ? 0.6 : 1})`,
                     }
                 ]}
             />
