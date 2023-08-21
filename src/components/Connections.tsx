@@ -62,33 +62,20 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
     const platform = Platforms.get(connection.type);
     const url = platform.getPlatformUserUrl?.(connection);
 
-    const img = (
-        <Image
-            accessibilityLabel={connection.name}
-            source={userTheme === "light" ? platform.icon.lightSVG : platform.icon.darkSVG}
-            style={{
-                width: get(manifest.name, 'iconSize', 32),
-                height: get(manifest.name, 'iconSize', 32)
-            }}
-        />
-    );
-
     return (
-        url
-            ? 
-            <Button
-                className="vc-user-connection"
-                onClick={() => console.log("hi")}
-            >
-                {img}
-            </Button>
-            : 
-            <Button
-                className="vc-user-connection"
-                onClick={() => console.log("hi")}
-            >
-                {img}
-            </Button>
+        <Button
+            className="vc-user-connection"
+            onClick={() => console.log("hi")}
+        >
+            <Image
+                accessibilityLabel={connection.name}
+                source={userTheme === "light" ? platform.icon.lightSVG : platform.icon.darkSVG}
+                style={{
+                    width: get(manifest.name, 'iconSize', 32),
+                    height: get(manifest.name, 'iconSize', 32)
+                }}
+            />
+        </Button>
     );
 }
 
