@@ -7,9 +7,9 @@ import manifest from '../manifest.json';
 import Settings from './components/Settings';
 
 const Typing = getByProps('startTyping');
-const Patcher = create('silent-typing');
+const Patcher = create('show-connections');
 
-const SilentTyping: Plugin = {
+const ShowConnections: Plugin = {
    ...manifest,
 
    onStart() {
@@ -26,4 +26,4 @@ const SilentTyping: Plugin = {
    }
 };
 
-registerPlugin(SilentTyping);
+registerPlugin(ShowConnections);
