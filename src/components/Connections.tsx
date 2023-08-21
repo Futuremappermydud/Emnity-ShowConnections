@@ -70,8 +70,8 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
                 accessibilityLabel={connection.name}
                 source={userTheme === "light" ? platform.icon.lightSVG : platform.icon.darkSVG}
                 style={{
-                    width: get(manifest.name, 'iconSize', 32),
-                    height: get(manifest.name, 'iconSize', 32)
+                    width: 32,
+                    height: 32
                 }}
             />
         </Pressable>
@@ -91,6 +91,7 @@ export default ({ userId, theme }: { userId: string, theme: string }) => {
         return null;
 
     return <UserProfileSection title="Connections">
+        
         <ConnectionComponent connection={
             {
                 "type": "github",
