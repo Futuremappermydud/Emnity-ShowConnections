@@ -1,18 +1,13 @@
 import { get } from "enmity/api/settings";
-import { View, Text, TouchableOpacity, Image, Button, Pressable } from "enmity/components";
-import { Constants, React, StyleSheet, Toasts, Assets } from "enmity/metro/common";
+import { Image, Pressable } from "enmity/components";
+import { Constants, React, StyleSheet } from "enmity/metro/common";
 import { getByName, getByProps } from "enmity/metro";
-import { Account } from "enmity/common";    
-import Settings from "./Settings";
-import manifest from "../../manifest.json"
+import { getIDByName } from "enmity/api/assets"
 
 const { useThemeContext } = getByProps("useThemeContext");
 const { meta: { resolveSemanticColor } } = getByProps("colors", "meta");
 const UserProfileSection = getByName("UserProfileSection");
-const { UserProfileGradientCard } = getByProps("UserProfileGradientCard");
-const { triggerHaptic } = getByProps("triggerHaptic");
 const UserProfileStore = getByProps("getUserProfile");
-const Platforms = getByProps("isSupported", "getByUrl");
 
 const styles = StyleSheet.createThemedStyleSheet({
     container: {
@@ -53,13 +48,8 @@ interface Connection {
     verified: boolean;
 }
 
-interface ConnectionPlatform {
-    getPlatformUserUrl(connection: Connection): string;
-    icon: { lightSVG: string, darkSVG: string; };
-}
-
 function ConnectionComponent ({connection, userTheme}: {connection: any, userTheme: string}) {
-    const img = getByName("img_account_sync_youtube_light_and_dark");
+    const img = getIDByName("img_account_sync_youtube_light_and_dark");
 
     return (
         <Pressable 
