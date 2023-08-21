@@ -11,6 +11,7 @@ export default ({ settings }: SettingsProps) => {
       label='Example Setting'
       trailing={
          <FormSelect
+            options={ [ "bruh", "bruh2" ] }
             value={settings.get('example', true)}
             onValueChange={() => settings.toggle('example', true)}
          />
