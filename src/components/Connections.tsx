@@ -64,8 +64,7 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
 
     return (
         <Button
-            className="vc-user-connection"
-            onClick={() => console.log("hi")}
+            onPress={() => console.log("hi")}
         >
             <Image
                 accessibilityLabel={connection.name}
