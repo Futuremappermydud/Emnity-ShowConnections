@@ -1,4 +1,4 @@
-import { FormRow, FormSelect } from 'enmity/components';
+import { FormRadio, FormRow, FormSelect } from 'enmity/components';
 import { SettingsStore } from 'enmity/api/settings';
 import { React } from 'enmity/metro/common';
 
@@ -7,14 +7,13 @@ interface SettingsProps {
 }
 
 export default ({ settings }: SettingsProps) => {
-   return <FormRow
-      label='Example Setting'
-      trailing={
-         <FormSelect
-            options={ [ "bruh", "bruh2" ] }
-            value={settings.get('example', true)}
-            onValueChange={() => settings.toggle('example', true)}
-         />
+   return <FormRow trailing=
+      {
+         [
+            <FormRadio label="Compact" value={true}/>,
+            <FormRadio label="Cozy" value={false}/>,
+            <FormRadio label="Roomy" value={false}/>
+         ]
       }
    />;
 };
