@@ -1,4 +1,4 @@
-import { FormRow, FormSwitch } from 'enmity/components';
+import { FormRow, FormSelect } from 'enmity/components';
 import { SettingsStore } from 'enmity/api/settings';
 import { React } from 'enmity/metro/common';
 
@@ -10,7 +10,7 @@ export default ({ settings }: SettingsProps) => {
    return <FormRow
       label='Example Setting'
       trailing={
-         <FormSwitch
+         <FormSelect
             value={settings.get('example', true)}
             onValueChange={() => settings.toggle('example', true)}
          />
