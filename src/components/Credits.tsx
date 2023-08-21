@@ -94,7 +94,7 @@ export default ({ manifest }: CreditsProps) => {
                 </Animated.View>
             </TouchableOpacity>
             <View style={styles.textContainer}>
-                <TouchableOpacity onPress={(): void => Router.openURL(plugin.repo)}>
+                <TouchableOpacity onPress={(): void => Router.openURL(manifest.links.source)}>
                     <Text style={[styles.mainText, styles.header]}>
                         {manifest.name}
                     </Text>
