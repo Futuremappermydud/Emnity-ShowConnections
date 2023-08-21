@@ -49,7 +49,7 @@ interface Connection {
 }
 
 function ConnectionComponent ({connection, userTheme}: {connection: any, userTheme: string}) {
-    const img = getIDByName("img_account_sync_${connection.type}_light_and_dark");
+    const img = getIDByName("img_account_sync_" + connection.type + "_light_and_dark");
 
     return (
         <Pressable 
