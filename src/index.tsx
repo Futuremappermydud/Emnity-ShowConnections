@@ -9,6 +9,7 @@ import Settings from './components/Settings';
 const Typing = getByProps('startTyping');
 const Patcher = create('show-connections');
 const UserProfile = getByProps("PRIMARY_INFO_TOP_OFFSET", "SECONDARY_INFO_TOP_MARGIN", "SIDE_PADDING")
+const UserTheme = getByProps('theme', 'primaryColor');
 import { findInReactTree } from "enmity/utilities"
 import Connections from './components/Connections';
 
@@ -29,7 +30,7 @@ const ShowConnections: Plugin = {
          const { userId } = profileCardSection?.find((r: any) => typeof r?.props?.displayProfile?.userId === "string")?.props?.displayProfile ?? {};
          
 
-         profileCardSection.unshift(<Connections userId={userId} theme="dark"/>)
+         profileCardSection.unshift(<Connections userId={userId} theme="light"/>)
      })
    },
 
