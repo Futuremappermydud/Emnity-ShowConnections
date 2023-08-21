@@ -84,7 +84,7 @@ export default ({ userId, theme }: { userId: string, theme: string }) => {
     if (!connections?.length)
         return null;
 
-    return <UserProfileSection title="Connections">
+    return <UserProfileSection title={theme}>
         <View style={{ flexDirection: 'row' }}>
             {
                 connections.map((connection: Connection)=> {
