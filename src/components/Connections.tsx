@@ -1,6 +1,6 @@
 import { get } from "enmity/api/settings";
 import { View, Text, TouchableOpacity, Image, Button, Pressable } from "enmity/components";
-import { Constants, React, StyleSheet, Toasts } from "enmity/metro/common";
+import { Constants, React, StyleSheet, Toasts, Assets } from "enmity/metro/common";
 import { getByName, getByProps } from "enmity/metro";
 import { Account } from "enmity/common";    
 import Settings from "./Settings";
@@ -59,8 +59,7 @@ interface ConnectionPlatform {
 }
 
 function ConnectionComponent ({connection, userTheme}: {connection: any, userTheme: string}) {
-    const platform = Platforms.get(connection.type);
-    const url = platform.getPlatformUserUrl?.(connection);
+    const img = getByName("img_account_sync_type" + connection.id + "_light_and_dark");
 
     return (
         <Pressable 
@@ -68,7 +67,7 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
         >
             <Image
                 accessibilityLabel={connection.name}
-                source={userTheme === "light" ? platform.icon.lightSVG : platform.icon.darkSVG}
+                source={img}
                 style={{
                     width: 32,
                     height: 32
