@@ -1,4 +1,4 @@
-import { FormRadio, FormRow, FormSelect, ScrollView, View } from 'enmity/components';
+import { FormInput, FormRadio, FormRow, FormSelect, ScrollView, View } from 'enmity/components';
 import { get, getBoolean, set, SettingsStore } from 'enmity/api/settings';
 import { React, StyleSheet, Constants } from 'enmity/metro/common';
 import Credits from './Credits';
@@ -56,6 +56,11 @@ export default ({ settings }: SettingsProps) => {
             onPress={() => {
                set(manifest.name, "mode", "roomy");;
              }}
+         />
+         <FormRow
+            label="Icon Size"
+            subLabel="Changes the size of connection icons"
+            trailing={<FormInput value={get(manifest.name, "iconSize", "32")} onChange={(value)=>{set(manifest.name, "iconSize", value.replace(/\D/g,''));}} />}
          />
       </View>
    </ScrollView>;
