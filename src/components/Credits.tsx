@@ -9,6 +9,18 @@ export interface CreditsProps {
     manifest: typeof manifest;
 }
 
+type DefaultObject = { [key: string]: string | number | DefaultObject }
+const shadow = (opacity: number = 0.10): DefaultObject => ({
+    shadowColor: "#000",
+    shadowOffset: {
+        width: 1,
+        height: 4,
+    },
+    shadowOpacity: opacity,
+    shadowRadius: 4.65,
+    elevation: 8
+});
+
 const styles = StyleSheet.createThemedStyleSheet({
     container: {
         marginTop: 25,
@@ -21,13 +33,13 @@ const styles = StyleSheet.createThemedStyleSheet({
         paddingTop: 5,
         flexDirection: 'column',
         flexWrap: 'wrap',
-        ...Miscellaneous.shadow()
+        ...shadow
     },
     image: {
         width: 75,
         height: 75,
         borderRadius: 10,
-        ...Miscellaneous.shadow()
+        ...shadow
     },
     mainText: {
         opacity: 0.975,
