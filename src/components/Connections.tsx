@@ -1,5 +1,5 @@
 import { get } from "enmity/api/settings";
-import { View, Text, TouchableOpacity, Image, Button } from "enmity/components";
+import { View, Text, TouchableOpacity, Image, Button, Pressable } from "enmity/components";
 import { Constants, React, StyleSheet, Toasts } from "enmity/metro/common";
 import { getByName, getByProps } from "enmity/metro";
 import { Account } from "enmity/common";    
@@ -63,7 +63,7 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
     const url = platform.getPlatformUserUrl?.(connection);
 
     return (
-        <Button
+        <Pressable 
             onPress={() => console.log("hi")}
         >
             <Image
@@ -74,7 +74,7 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
                     height: get(manifest.name, 'iconSize', 32)
                 }}
             />
-        </Button>
+        </Pressable>
     );
 }
 
