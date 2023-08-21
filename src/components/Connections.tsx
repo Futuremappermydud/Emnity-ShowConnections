@@ -63,10 +63,13 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
             <Image
                 accessibilityLabel={connection.name}
                 source={img}
-                style={{
-                    width: 32,
-                    height: 32
-                }}
+                style={({pressed}) => [
+                    {
+                        width: 32,
+                        height: 32,
+                        opacity: pressed ? .6 : 1
+                    }
+                ]}
             />
         </Pressable>
     );

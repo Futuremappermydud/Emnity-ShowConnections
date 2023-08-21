@@ -22,8 +22,10 @@ const ShowConnections: Plugin = {
          )?.props?.children
 
          const userProfileTheme = findInReactTree(res, r => 
-            r?.type?.displayName === "UserProfile" &&
-            r?.props?.children.findIndex(i => i?.type?.name === "ThemeContextProvider") !== -1
+         {
+            console.log(r?.type?.name + " " + r?.type?.displayName);
+            return r?.type?.displayName === "ThemeContextProvider";
+         }
         )?.props?.children
 
          if (!profileCardSection) return res;
