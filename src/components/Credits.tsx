@@ -112,7 +112,7 @@ export default ({ manifest }: CreditsProps) => {
                 </TouchableOpacity>
                 <View style={{flexDirection: 'row'}}>
                     <Text style={[styles.mainText, styles.subHeader]}>
-                        A project by 
+                        A project by {manifest.authors[0].name}
                     </Text>
                 </View>
                 <View>
