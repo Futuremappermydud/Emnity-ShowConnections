@@ -59,8 +59,8 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
                 accessibilityLabel={connection.name}
                 source={img}
                 style={{
-                    width: 64,
-                    height: 64
+                    width: 32,
+                    height: 32
                 }}
             />
         </Pressable>
