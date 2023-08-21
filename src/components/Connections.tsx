@@ -49,7 +49,7 @@ interface Connection {
 }
 
 function ConnectionComponent ({connection, userTheme}: {connection: any, userTheme: string}) {
-    const img = getIDByName("img_account_sync_youtube_light_and_dark");
+    const img = getIDByName("img_account_sync_${connection.type}_light_and_dark");
 
     return (
         <Pressable 
@@ -59,8 +59,8 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
                 accessibilityLabel={connection.name}
                 source={img}
                 style={{
-                    width: 32,
-                    height: 32
+                    width: 48,
+                    height: 48
                 }}
             />
         </Pressable>
@@ -80,15 +80,15 @@ export default ({ userId, theme }: { userId: string, theme: string }) => {
         return null;
 
     return <UserProfileSection title="Connections">
-        
-        <ConnectionComponent connection={
-            {
-                "type": "github",
-                "id": "54294576",
-                "name": "Futuremappermydud",
-                "verified": true
-            }}
-            userTheme={theme}
-        />
+
+        {
+            connections.map((connection: Connection)=> {
+                return (
+                    <ConnectionComponent connection={connection}
+                        userTheme={theme}
+                    />
+                )
+            })
+        }
     </UserProfileSection>
 }
