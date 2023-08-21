@@ -1,5 +1,5 @@
 import { get } from "enmity/api/settings";
-import { Image, Pressable } from "enmity/components";
+import { Image, Pressable, View } from "enmity/components";
 import { Constants, React, StyleSheet } from "enmity/metro/common";
 import { getByName, getByProps } from "enmity/metro";
 import { getIDByName } from "enmity/api/assets"
@@ -80,14 +80,16 @@ export default ({ userId, theme }: { userId: string, theme: string }) => {
         return null;
 
     return <UserProfileSection title="Connections">
-        {
-            connections.map((connection: Connection)=> {
-                return (
-                    <ConnectionComponent connection={connection}
-                        userTheme={theme}
-                    />
-                )
-            })
-        }
+        <View style={{ flexDirection: 'row' }}>
+            {
+                connections.map((connection: Connection)=> {
+                    return (
+                        <ConnectionComponent connection={connection}
+                            userTheme={theme}
+                        />
+                    )
+                })
+            }
+        </View>
     </UserProfileSection>
 }
