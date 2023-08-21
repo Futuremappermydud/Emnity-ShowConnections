@@ -10,6 +10,7 @@ const Patcher = create('show-connections');
 const UserProfile = getByProps("PRIMARY_INFO_TOP_OFFSET", "SECONDARY_INFO_TOP_MARGIN", "SIDE_PADDING")
 import { findInReactTree } from "enmity/utilities"
 import Connections from './components/Connections';
+import { json } from 'stream/consumers';
 
 const ShowConnections: Plugin = {
    ...manifest,
@@ -23,7 +24,14 @@ const ShowConnections: Plugin = {
 
          const userProfileTheme = findInReactTree(res, r => 
          {
-            return r?.type?.name === "ThemeContextProvider";
+            console.log(r?.type?.displayName);
+            if(r?.type?.name === "ThemeContextProvider")
+            {
+               console.log("found");
+               console.log(JSON.stringify(r?.props?.children));
+               return true;
+            }
+            return false;
          }
         )?.props?.children
 
