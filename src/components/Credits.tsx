@@ -89,8 +89,7 @@ export default ({ manifest }: CreditsProps) => {
     const onPress = () => Router.openURL(manifest.links.source);
     const animatedScaleStyle = { transform: [{ scale: animatedButtonScale }] }
 
-    return <>
-        <View style={styles.container}>
+    return <View style={styles.container}>
             <TouchableOpacity 
                 onPress={onPress}
                 onPressIn={onPressIn}
@@ -100,7 +99,7 @@ export default ({ manifest }: CreditsProps) => {
                     <Image
                         style={[styles.image]}
                         source={{
-                            uri: "https://cdn.discordapp.com/avatars/741727188809810181/8bb5f28abad304e8f5983d077bdf9ae9.webp", 
+                            uri: "https://cdn.discordapp.com/avatars/741727188809810181/8bb5f28abad304e8f5983d077bdf9ae9.png", 
                         }}
                     />
                 </Animated.View>
@@ -132,5 +131,4 @@ export default ({ manifest }: CreditsProps) => {
                 </View>
             </View>
         </View>
-    </>
 };
