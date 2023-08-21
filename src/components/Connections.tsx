@@ -59,8 +59,8 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
                 accessibilityLabel={connection.name}
                 source={img}
                 style={{
-                    width: 48,
-                    height: 48
+                    width: 64,
+                    height: 64
                 }}
             />
         </Pressable>
@@ -80,7 +80,6 @@ export default ({ userId, theme }: { userId: string, theme: string }) => {
         return null;
 
     return <UserProfileSection title="Connections">
-
         {
             connections.map((connection: Connection)=> {
                 return (
