@@ -29,7 +29,7 @@ const ShowConnections: Plugin = {
          const { userId } = profileCardSection?.find((r: any) => typeof r?.props?.displayProfile?.userId === "string")?.props?.displayProfile ?? {};
          
 
-         profileCardSection.unshift(<Connections userId={userId}/>)
+         profileCardSection.unshift(<Connections userId={userId} theme="dark"/>)
      })
    },
 

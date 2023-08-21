@@ -27,6 +27,7 @@
    },
    "dependencies": {
       "enmity": "*",
-      "react-devtools": "^4.28.0"
+      "react-devtools": "^4.28.0",
+      "react-native": "^0.71.2"
    }
 }

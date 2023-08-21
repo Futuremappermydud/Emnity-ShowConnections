@@ -5,7 +5,12 @@
    "authors": [
       {
          "name": "FutureMapper",
+         "profile": "https://github.com/Futuremappermydud",
          "id": "741727188809810181"
       }
-   ]
+   ],
+   "links": {
+      "source": "https://github.com/Futuremappermydud/Emnity-ShowConnections/",
+      "dist": "https://github.com/Futuremappermydud/Emnity-ShowConnections/blob/main/dist/ShowConnections.js"
+    }
 }
