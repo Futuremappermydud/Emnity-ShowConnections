@@ -59,7 +59,7 @@ interface ConnectionPlatform {
 }
 
 function ConnectionComponent ({connection, userTheme}: {connection: any, userTheme: string}) {
-    const img = getByName("img_account_sync_" + connection.id + "_light_and_dark");
+    const img = getByName("img_account_sync_youtube_light_and_dark");
 
     return (
         <Pressable 
