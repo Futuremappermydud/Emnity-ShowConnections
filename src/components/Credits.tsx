@@ -10,17 +10,39 @@ export interface CreditsProps {
 }
 
 const styles = StyleSheet.createThemedStyleSheet({
-    creditsContainer: {
-        paddingTop: 30,
-        paddingLeft: 20,
+    container: {
+        marginTop: 25,
+        marginLeft: '5%',
+        marginBottom: -15,
         flexDirection: "row"
-      },
-      creditsTextContainer: {
+    },
+    textContainer: {
         paddingLeft: 15,
         paddingTop: 5,
         flexDirection: 'column',
         flexWrap: 'wrap',
-      }    
+        ...Miscellaneous.shadow()
+    },
+    image: {
+        width: 75,
+        height: 75,
+        borderRadius: 10,
+        ...Miscellaneous.shadow()
+    },
+    mainText: {
+        opacity: 0.975,
+        letterSpacing: 0.25
+    },
+    header: {
+        color: Constants.ThemeColorMap.HEADER_PRIMARY,
+        fontFamily: Constants.Fonts.DISPLAY_BOLD,
+        fontSize: 25,
+        letterSpacing: 0.25
+    },
+    subHeader: {
+        color: Constants.ThemeColorMap.HEADER_SECONDARY,
+        fontSize: 12.75,
+    } 
 })
 // @ts-ignore
 const Animated = window.enmity.modules.common.Components.General.Animated
@@ -55,59 +77,48 @@ export default ({ manifest }: CreditsProps) => {
     const onPress = () => Router.openURL(manifest.links.source);
     const animatedScaleStyle = { transform: [{ scale: animatedButtonScale }] }
 
-    return <View style={styles.creditsContainer}>
-        <TouchableOpacity
-            onPress={onPress}
-            onPressIn={onPressIn}
-            onPressOut={onPressOut}
-        >
-            <Animated.View style={[animatedScaleStyle]}>
-                <Image
-                    style={[styles.creditsImage]}
-                    source={{ uri: 'https://cdn.spin.rip/r/l9uevwe4ia0.jpg' }}
-                />
-            </Animated.View>
-        </TouchableOpacity>
-        <View style={styles.creditsTextContainer}>
-            <TouchableOpacity onPress={onPress}>
-                <Text style={[styles.creditsMainText, styles.creditsHeader]}>
-                    {manifest.name}
-                </Text>
+    return <>
+        <View style={styles.container}>
+            <TouchableOpacity 
+                onPress={onPress}
+                onPressIn={onPressIn}
+                onPressOut={onPressOut}
+            >
+                <Animated.View style={animatedScaleStyle}>
+                    <Image
+                        style={[styles.image]}
+                        source={{
+                            uri: "https://cdn.discordapp.com/avatars/741727188809810181/8bb5f28abad304e8f5983d077bdf9ae9.webp", 
+                        }}
+                    />
+                </Animated.View>
             </TouchableOpacity>
-            <View style={{ flexDirection: 'row' }}>
-                <Text style={[styles.creditsMainText, styles.creditsSubHeader]}>
-                    A plugin by
-                </Text>
-                {manifest.authors.map((author, index: number, authorsArray: any[]) => {
-                    return <TouchableOpacity onPress={(): void => Router.openURL(author.profile)}>
-                        <Text
-                            style={[styles.creditsMainText, styles.safeText, styles.creditsSubHeader, {
-                                paddingLeft: 4,
-                                fontFamily: Constants.Fonts.DISPLAY_BOLD,
-                                flexDirection: 'row'
-                            }]
-                            }>
-                            {author.name}{index < (authorsArray.length - 1) ? "," : null}
-                        </Text>
-                    </TouchableOpacity>
-                })}
-            </View>
-            <View>
-                <TouchableOpacity
-                    style={{ flexDirection: 'row' }}
-                >
-                    <Text style={[styles.creditsMainText, styles.creditsSubHeader]}>
-                        Version:
-                    </Text>
-                    <Text
-                        style={[styles.creditsMainText, styles.creditsSubHeader, {
-                            paddingLeft: 4,
-                            fontFamily: Constants.Fonts.DISPLAY_BOLD
-                        }]} >
-                        {manifest.version}
+            <View style={styles.textContainer}>
+                <TouchableOpacity onPress={(): void => Router.openURL(plugin.repo)}>
+                    <Text style={[styles.mainText, styles.header]}>
+                        {manifest.name}
                     </Text>
                 </TouchableOpacity>
+                <View style={{flexDirection: 'row'}}>
+                    <Text style={[styles.mainText, styles.subHeader]}>
+                        A project by 
+                    </Text>
+                </View>
+                <View>
+                    <TouchableOpacity style={{flexDirection: 'row'}}>
+                        <Text style={[styles.mainText, styles.subHeader]}>
+                            Version: 
+                        </Text>
+
+                        <Text style={[styles.mainText, styles.subHeader, {
+                            paddingLeft: 4,
+                            fontFamily: Constants.Fonts.DISPLAY_BOLD
+                        }]}>
+                            {manifest.version}
+                        </Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         </View>
-    </View>
+    </>
 };
