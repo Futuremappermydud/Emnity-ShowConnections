@@ -24,7 +24,7 @@ const shadow = (opacity: number = 0.10): DefaultObject => ({
 const styles = StyleSheet.createThemedStyleSheet({
    container: {
       width: "90%",
-      marginTop: 20,
+      marginTop: 25,
       marginLeft: '5%',
       borderRadius: 10,
       backgroundColor: Constants.ThemeColorMap.BACKGROUND_MOBILE_SECONDARY,

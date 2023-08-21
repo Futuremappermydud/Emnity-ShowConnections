@@ -58,7 +58,7 @@ interface ConnectionPlatform {
     icon: { lightSVG: string, darkSVG: string; };
 }
 
-function ConnectionComponent ({connection, userTheme}: {connection: Connection, userTheme: string}) {
+function ConnectionComponent ({connection, userTheme}: {connection: any, userTheme: string}) {
     const platform = Platforms.get(connection.type);
     const url = platform.getPlatformUserUrl?.(connection);
 
@@ -106,6 +106,14 @@ export default ({ userId, theme }: { userId: string, theme: string }) => {
         return null;
 
     return <UserProfileSection title="Connections">
-        
+        <ConnectionComponent connection={
+            {
+                "type": "github",
+                "id": "54294576",
+                "name": "Futuremappermydud",
+                "verified": true
+            }}
+            userTheme={theme}
+        />
     </UserProfileSection>
 }
