@@ -1,5 +1,5 @@
 import { get } from "enmity/api/settings";
-import { View, Text, TouchableOpacity, Image } from "enmity/components";
+import { View, Text, TouchableOpacity, Image, Button } from "enmity/components";
 import { Constants, React, StyleSheet, Toasts } from "enmity/metro/common";
 import { getByName, getByProps } from "enmity/metro";
 import { Account } from "enmity/common";    
@@ -75,21 +75,20 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
 
     return (
         url
-            ? <a
-                    className="vc-user-connection"
-                    href={url}
-                    target="_blank"
-                    onClick={e => {
-                    }}
-                >
-                    {img}
-                </a>
-            : <button
-                    className="vc-user-connection"
-                    onClick={() => console.log("hi")}
-                >
-                    {img}
-                </button>
+            ? 
+            <Button
+                className="vc-user-connection"
+                onClick={() => console.log("hi")}
+            >
+                {img}
+            </Button>
+            : 
+            <Button
+                className="vc-user-connection"
+                onClick={() => console.log("hi")}
+            >
+                {img}
+            </Button>
     );
 }
 
