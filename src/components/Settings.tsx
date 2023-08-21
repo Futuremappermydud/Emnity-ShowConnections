@@ -1,4 +1,4 @@
-import { FormRadio, FormRow, FormSelect, ScrollView } from 'enmity/components';
+import { FormDivider, FormRadio, FormRow, FormSelect, ScrollView, TouchableHighlight } from 'enmity/components';
 import { SettingsStore } from 'enmity/api/settings';
 import { React } from 'enmity/metro/common';
 import Credits from './Credits';
@@ -11,11 +11,14 @@ interface SettingsProps {
 export default ({ settings }: SettingsProps) => {
    return <ScrollView>
       <Credits manifest={manifest}/>
-      <FormRow label="Compact" trailing=
-         {
-            <FormRadio value={false}/>
-         }
-      />
+      <FormDivider/>
+      <TouchableHighlight>
+         <FormRow label="Compact" trailing=
+            {
+               <FormRadio value={false}/>
+            }
+         />
+      </TouchableHighlight>
       <FormRow label="Cozy" trailing=
          {
             <FormRadio value={true}/>
