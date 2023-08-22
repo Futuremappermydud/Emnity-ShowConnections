@@ -17,7 +17,7 @@ const ShowConnections: Plugin = {
    ...manifest,
 
    onStart() {
-      Patcher.instead(UserProfileStore.default, 'getUserProfile', (_, userId, res) => {
+      Patcher.instead(UserProfileStore, 'getUserProfile', (_, userId, res) => {
          console.log(userId);
          let result = res(userId);
          console.log(JSON.stringify(result));
