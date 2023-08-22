@@ -1,4 +1,4 @@
-import { FormSwitch, FormRadio, FormRow, FormSelect, ScrollView, View } from 'enmity/components';
+import { FormSwitch, FormRadio, FormRow, ScrollView, View } from 'enmity/components';
 import { get, getBoolean, set, SettingsStore } from 'enmity/api/settings';
 import { React, StyleSheet, Constants } from 'enmity/metro/common';
 import Credits from './Credits';

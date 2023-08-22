@@ -12,12 +12,6 @@ import { findInReactTree } from "enmity/utilities"
 import Connections from './components/Connections';
 import { getBoolean } from 'enmity/api/settings';
 
-function clearArray(array) {
-   while (array.length > 0) {
-     array.pop();
-   }
- }
-
 const ShowConnections: Plugin = {
    ...manifest,
 

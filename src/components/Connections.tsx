@@ -68,7 +68,7 @@ interface Connection {
     verified: boolean;
 }
 
-function ConnectionComponent ({connection, userTheme}: {connection: any, userTheme: string}) {
+function ConnectionComponent ({connection, userTheme, margin}: {connection: any, userTheme: string, margin: number}) {
     let img = getIDByName(`img_account_sync_${connection.type.replace('riotgames', 'riot')}_light_and_dark`);
     if(!img)
     {
@@ -78,17 +78,6 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
     {
         img = getIDByName(`ic_globe_24px`);
     }
-
-    let size = get(manifest.name, "mode", "cozy");
-    let result = (()=>{
-        switch (size) {
-          case 'compact' : return 0;
-          case 'cozy' : return 5;
-          case 'roomy' : return 10;
-          case 'extreme' : return 15;
-          default : return 1;
-        }
-      })();
 
       console.log(result);
     return (
@@ -135,14 +124,26 @@ export default ({ userId, theme }: { userId: string, theme: string }) => {
     if (!connections?.length)
         return null;
 
+	let size = get(manifest.name, "mode", "cozy");
+    let result = (()=>{
+        switch (size) {
+          case 'compact' : return 0;
+          case 'cozy' : return 5;
+          case 'roomy' : return 10;
+          case 'extreme' : return 15;
+          default : return 1;
+        }
+      })();
+
     return <UserProfileSection title={"Connections"}>
-        <ScrollView horizontal={true} style={{ flexDirection: 'row'}}>
+        <ScrollView horizontal={true} style={{ flexDirection: 'row', gap: {result}}}>
             {
                 connections.map((connection: Connection)=> {
                     return (
                         <ConnectionComponent
 							connection={connection}
                             userTheme={theme}
+							margin={result}
                         />
                     )
                 })
