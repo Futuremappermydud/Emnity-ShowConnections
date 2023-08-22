@@ -61,7 +61,7 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
         <Pressable 
             onPress={() => console.log("hi")}
             style={{
-                margin: 5
+                margin: 15
             }}
         >
 
