@@ -20,23 +20,48 @@ const [
 const URLS = [
 	{
 		"type": "domain",
-		"url": ""
+		"url": "",
+		"usage": "name"
 	},
 	{
 		"type": "twitter",
-		"url": "https://twitter.com/"
+		"url": "https://twitter.com/",
+		"usage": "name"
 	},
 	{
 		"type": "reddit",
-		"url": "https://www.reddit.com/user/"
+		"url": "https://www.reddit.com/user/",
+		"usage": "name"
 	},
 	{
 		"type": "github",
-		"url": "https://github.com/"
+		"url": "https://github.com/",
+		"usage": "name"
 	},
 	{
 		"type": "twitch",
-		"url": "https://www.twitch.tv/"
+		"url": "https://www.twitch.tv/",
+		"usage": "name"
+	},
+	{
+		"type": "youtube",
+		"url": "https://www.youtube.com/channel/",
+		"usage": "id"
+	},
+	{
+		"type": "steam",
+		"url": "https://steamcommunity.com/id/",
+		"usage": "id"
+	},
+	{
+		"type": "spotify",
+		"url": "https://open.spotify.com/user/",
+		"usage": "id"
+	},
+	{
+		"type": "spotify",
+		"url": "https://open.spotify.com/user/",
+		"usage": "id"
 	}
 ]
 
