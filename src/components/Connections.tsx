@@ -65,8 +65,8 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
                 source={img}
                 style={({pressed}) => [
                     {
-                        width: 32,
-                        height: 32,
+                        width: 48,
+                        height: 48,
                         backgroundColor: `rgba(0, 0, 0, ${pressed ? 0.6 : 1})`,
                     }
                 ]}
