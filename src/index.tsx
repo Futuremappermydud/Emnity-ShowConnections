@@ -32,6 +32,7 @@ function decode(bio: string): Array<number> | null {
    const colorString = bio.match(
        /\u{e005b}\u{e0023}([\u{e0061}-\u{e0066}\u{e0041}-\u{e0046}\u{e0030}-\u{e0039}]+?)\u{e002c}\u{e0023}([\u{e0061}-\u{e0066}\u{e0041}-\u{e0046}\u{e0030}-\u{e0039}]+?)\u{e005d}/u,
    );
+
    if (colorString != null) {
        const parsed = [...colorString[0]]
            .map(x => String.fromCodePoint(x.codePointAt(0)! - 0xe0000))
@@ -45,6 +46,16 @@ function decode(bio: string): Array<number> | null {
    } else {
        return null;
    }
+}
+
+function getFixedBio(bioString: string): string | null {
+   if (bioString == null) return null;
+
+   const bio = bioString.replace(
+      /\u{e005b}\u{e0023}([\u{e0061}-\u{e0066}\u{e0041}-\u{e0046}\u{e0030}-\u{e0039}]+?)\u{e002c}\u{e0023}([\u{e0061}-\u{e0066}\u{e0041}-\u{e0046}\u{e0030}-\u{e0039}]+?)\u{e005d}/u,
+      ''
+  );
+  return bio;
 }
 
 const ShowConnections: Plugin = {
@@ -64,6 +75,7 @@ const ShowConnections: Plugin = {
             result.themeColors = colors;
             console.log('6');
             result.premiumType = 2;
+            result.bio = getFixedBio(result?.bio);
          }
          return result;
       });
