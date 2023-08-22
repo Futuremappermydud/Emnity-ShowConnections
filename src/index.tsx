@@ -11,6 +11,7 @@ const UserProfile = getByProps("PRIMARY_INFO_TOP_OFFSET", "SECONDARY_INFO_TOP_MA
 import { findInReactTree } from "enmity/utilities"
 import Connections from './components/Connections';
 import { json } from 'stream/consumers';
+import { ApplicationCommandPermissionType } from 'enmity/api/commands';
 
 function clearArray(array) {
    while (array.length > 0) {
@@ -23,7 +24,7 @@ const ShowConnections: Plugin = {
 
    onStart() {
       Patcher.after(UserProfile.default, "type", (_, __, res) => {
-         const profileCardSection = findInReactTree(res, r => 
+         let profileCardSection = findInReactTree(res, r => 
              r?.type?.displayName === "View" &&
              r?.props?.children.findIndex(i => i?.type?.name === "UserProfileBio") !== -1
          )?.props?.children
@@ -38,7 +39,10 @@ const ShowConnections: Plugin = {
 
          const { userId } = profileCardSection?.find((r: any) => typeof r?.props?.displayProfile?.userId === "string")?.props?.displayProfile ?? {};
 
-        clearArray(profileCardSection);
+         profileCardSection = profileCardSection.filter(element => {
+            console.log(element?.type?.name);
+            return element?.type?.name !== "UserProfileConnections"
+         });
 
          profileCardSection.unshift(<Connections userId={userId} theme={userProfileTheme?.theme}/>)
 
