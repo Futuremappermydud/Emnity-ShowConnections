@@ -28,6 +28,9 @@ const ShowConnections: Plugin = {
          }
         )?.props;
 
+        userProfileTheme.primaryColor = 335222;
+        userProfileTheme.secondaryColor = 4183545;
+
          if (!profileCardSection) return res;
 
          const { userId } = profileCardSection?.find((r: any) => typeof r?.props?.displayProfile?.userId === "string")?.props?.displayProfile ?? {};
