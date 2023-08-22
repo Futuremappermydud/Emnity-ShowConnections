@@ -29,7 +29,7 @@ const ShowConnections: Plugin = {
             {
                console.log("found");
                const { children, ...props } = r?.props
-               console.log(JSON.stringify(props));
+               console.log(props?.theme);
                return true;
             }
             return false;
