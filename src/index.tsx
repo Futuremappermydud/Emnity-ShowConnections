@@ -39,10 +39,9 @@ const ShowConnections: Plugin = {
 
          const { userId } = profileCardSection?.find((r: any) => typeof r?.props?.displayProfile?.userId === "string")?.props?.displayProfile ?? {};
 
-         profileCardSection = profileCardSection.filter(element => {
-            console.log(element?.type?.name);
-            return element?.type?.name !== "UserProfileConnections"
-         });
+         const index = profileCardSection.findIndex(key => key?.type?.name === "UserProfileConnections");
+
+         profileCardSection.splice(index, 1);
 
          profileCardSection.unshift(<Connections userId={userId} theme={userProfileTheme?.theme}/>)
 
