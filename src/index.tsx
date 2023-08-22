@@ -45,8 +45,8 @@ const ShowConnections: Plugin = {
 
         connections?.props?.children?.filter((val) => 
          {
-            console.log(val?.props?.title);
-            return val?.props?.title !== "Connections";
+            console.log(val?.type?.name);
+            return val?.type?.name !== "UserProfileConnections";
          });
          profileCardSection.unshift(<Connections userId={userId} theme={userProfileTheme?.theme}/>)
 

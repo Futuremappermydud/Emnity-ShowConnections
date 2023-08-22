@@ -57,6 +57,13 @@ export default ({ settings }: SettingsProps) => {
                set(manifest.name, "mode", "roomy");;
              }}
          />
+         <FormRow 
+            label="Extreme" 
+            trailing={<FormRadio selected={get(manifest.name, "mode", "cozy") === "extreme"}/>} 
+            onPress={() => {
+               set(manifest.name, "mode", "extreme");;
+             }}
+         />
          <FormRow
             label="Icon Size"
             subLabel="Changes the size of connection icons"
