@@ -50,7 +50,7 @@ const URLS = [
 	},
 	{
 		"type": "steam",
-		"url": "https://steamcommunity.com/id/",
+		"url": "https://steamcommunity.com/profiles/",
 		"usage": "id"
 	},
 	{
@@ -93,6 +93,7 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
       console.log(result);
     return (
         <TouchableHighlight 
+			activeOpacity={0.45}
             onPress={() => {
 				if(URLS.findIndex(value => value.type == connection.type) == -1)
 				{
@@ -117,7 +118,8 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
                 source={img}
                 style={{
                     width: 48,
-                    height: 48
+                    height: 48,
+					margin: {result}
                 }}
             />
         </TouchableHighlight>
