@@ -21,6 +21,8 @@ const ShowConnections: Plugin = {
          console.log('hihihi');
          console.log(JSON.stringify(args));
          let result = res.apply(self, args);
+         result.themeColors = [4403745, 11112810];
+         result.premiumType = 2;
          console.log(JSON.stringify(result));
          return result;
       });
