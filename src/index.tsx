@@ -34,6 +34,9 @@ const ShowConnections: Plugin = {
          if (!profileCardSection) return res;
 
          const { userId } = profileCardSection?.find((r: any) => typeof r?.props?.displayProfile?.userId === "string")?.props?.displayProfile ?? {};
+         const { bio } = profileCardSection?.find((r: any) => typeof r?.props?.displayProfile?.bio === "string")?.props?.bio ?? {};
+         console.log(bio.length);
+         console.log(bio);
 
          if(!getBoolean(manifest.name, "keepOg", false))
          {
