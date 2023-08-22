@@ -24,23 +24,24 @@ const ShowConnections: Plugin = {
 
          const userProfileTheme = findInReactTree(res, r => 
          {
-            console.log(r?.type?.displayName);
-            if(r?.type?.name === "ThemeContextProvider")
-            {
-               console.log("found");
-               const { children, ...props } = r?.props
-               console.log(props?.theme);
-               return true;
-            }
-            return false;
+            return r?.type?.name === "ThemeContextProvider";
          }
         )?.props;
+
+        const OGConnections = findInReactTree(res, r => 
+         {
+            return r?.type?.name === "UserProfileSection" && r?.props?.title == "Connections";
+         }
+        );
 
          if (!profileCardSection) return res;
 
          const { userId } = profileCardSection?.find((r: any) => typeof r?.props?.displayProfile?.userId === "string")?.props?.displayProfile ?? {};
 
+
+         profileCardSection.filter(val => val?.props?.title !== "Connections" );
          profileCardSection.unshift(<Connections userId={userId} theme={userProfileTheme?.theme}/>)
+
      })
    },
 

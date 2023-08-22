@@ -99,7 +99,7 @@ export default ({ userId, theme }: { userId: string, theme: string }) => {
         console.log(asset?.name);
     });
 
-    return <UserProfileSection title={theme}>
+    return <UserProfileSection title={"Connections"}>
         <ScrollView horizontal={true} style={{ flexDirection: 'row'}}>
             {
                 connections.map((connection: Connection)=> {
