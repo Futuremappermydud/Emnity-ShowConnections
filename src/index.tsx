@@ -28,24 +28,13 @@ const ShowConnections: Plugin = {
          }
         )?.props;
 
-        const OGConnections = findInReactTree(res, r => 
-         {
-            console.log(r?.type?.name + " " + r?.props?.title);
-            return r?.type?.name === "UserProfileConnections"
-         }
-        );
-
          if (!profileCardSection) return res;
 
          const { userId } = profileCardSection?.find((r: any) => typeof r?.props?.displayProfile?.userId === "string")?.props?.displayProfile ?? {};
 
-         const connections = findInReactTree(res, r => 
-            r?.type?.displayName === "View" &&
-            r?.props?.children.findIndex(i => i?.type?.name === "UserProfileConnections") !== -1
-        );
-
         profileCardSection.filter((val) => 
          {
+            console.log(val?.type?.name + " " + val?.props?.title);
             return val?.type?.name !== "UserProfileConnections";
          });
 
