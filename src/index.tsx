@@ -34,14 +34,13 @@ const ShowConnections: Plugin = {
             }
             return false;
          }
-        )?.props?.children
+        )?.props;
 
          if (!profileCardSection) return res;
 
          const { userId } = profileCardSection?.find((r: any) => typeof r?.props?.displayProfile?.userId === "string")?.props?.displayProfile ?? {};
-         const { theme } = userProfileTheme?.find((r: any) => typeof r?.props?.theme === "string")?.props?.theme ?? {};
 
-         profileCardSection.unshift(<Connections userId={userId} theme={theme}/>)
+         profileCardSection.unshift(<Connections userId={userId} theme={userProfileTheme?.theme}/>)
      })
    },
 
