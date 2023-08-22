@@ -1,5 +1,5 @@
 import { get } from "enmity/api/settings";
-import { Image, Pressable, View } from "enmity/components";
+import { Image, Pressable, ScrollView } from "enmity/components";
 import { Constants, React, StyleSheet } from "enmity/metro/common";
 import { getByName, getByProps } from "enmity/metro";
 import { getIDByName } from "enmity/api/assets"
@@ -67,8 +67,8 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
                 accessibilityLabel={connection.name}
                 source={img}
                 style={{
-                    width: 64,
-                    height: 64
+                    width: 48,
+                    height: 48
                 }}
             />
         </Pressable>
@@ -98,7 +98,7 @@ export default ({ userId, theme }: { userId: string, theme: string }) => {
     });
 
     return <UserProfileSection title={theme}>
-        <View style={{ flexDirection: 'row', gap: 5}}>
+        <ScrollView horizontal={true} style={{ flexDirection: 'row', gap: 5}}>
             {
                 connections.map((connection: Connection)=> {
                     return (
@@ -108,6 +108,6 @@ export default ({ userId, theme }: { userId: string, theme: string }) => {
                     )
                 })
             }
-        </View>
+        </ScrollView>
     </UserProfileSection>
 }
