@@ -109,9 +109,7 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
 					}
 				}
             }}
-            style={{
-                margin: {result}
-            }}
+			marginHorizontal={result}
         >
 
             <Image
