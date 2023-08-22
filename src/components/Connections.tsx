@@ -50,10 +50,10 @@ interface Connection {
 }
 
 function ConnectionComponent ({connection, userTheme}: {connection: any, userTheme: string}) {
-    let img = getIDByName(`img_account_sync_${connection.type}_light_and_dark`);
+    let img = getIDByName(`img_account_sync_${connection.type.replace('riotgames', 'riot')}_light_and_dark`);
     if(!img)
     {
-        img = getIDByName(`img_account_sync_${connection.type}_${userTheme.replace('riotgames', 'riot').replace('dark', 'white')}`);
+        img = getIDByName(`img_account_sync_${connection.type.replace('riotgames', 'riot')}_${userTheme.replace('dark', 'white')}`);
     }
 
 
