@@ -53,7 +53,7 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
     let img = getIDByName(`img_account_sync_${connection.type}_light_and_dark`);
     if(!img)
     {
-        img = getIDByName(`img_account_sync_${connection.type}_${userTheme}`);
+        img = getIDByName(`img_account_sync_${connection.type}_${userTheme.replace('riotgames', 'riot').replace('dark', 'white')}`);
     }
 
 
