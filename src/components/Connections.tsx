@@ -105,7 +105,7 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
 					const urlBase = URLS?.find(value => value.type == connection.type);
 					if(urlBase)
 					{
-						Router.openURL(urlBase?.url + urlBase?.usage == "name" ? connection.name : connection.id);
+						Router.openURL(urlBase?.url + (urlBase?.usage == "name" ? connection.name : connection.id));
 					}
 				}
             }}
