@@ -72,6 +72,7 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
         }
       })();
 
+      console.log(result);
     return (
         <Pressable 
             onPress={() => console.log("hi")}
