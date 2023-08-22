@@ -62,12 +62,13 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
             onPress={() => console.log("hi")}
             style={(pressed) => { opacity: {pressed ? 0.5 : 1}}}
         >
+
             <Image
                 accessibilityLabel={connection.name}
                 source={img}
                 style={{
-                    width: 32,
-                    height: 32
+                    width: 64,
+                    height: 64
                 }}
             />
         </Pressable>
@@ -97,7 +98,7 @@ export default ({ userId, theme }: { userId: string, theme: string }) => {
     });
 
     return <UserProfileSection title={theme}>
-        <View style={{ flexDirection: 'row' }}>
+        <View style={{ flexDirection: 'row', gap: 5}}>
             {
                 connections.map((connection: Connection)=> {
                     return (
