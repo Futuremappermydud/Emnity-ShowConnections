@@ -89,16 +89,6 @@ export default ({ userId, theme }: { userId: string, theme: string }) => {
     if (!connections?.length)
         return null;
 
-    let icons: Asset[] = []
-    find(asset => { 
-        if(asset?.name.startsWith("img_account"))
-            icons.push(asset); 
-        return false 
-    })
-    icons.forEach((asset)=> {
-        console.log(asset?.name);
-    });
-
     return <UserProfileSection title={"Connections"}>
         <ScrollView horizontal={true} style={{ flexDirection: 'row'}}>
             {
