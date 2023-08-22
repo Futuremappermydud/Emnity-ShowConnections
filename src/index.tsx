@@ -52,13 +52,19 @@ const ShowConnections: Plugin = {
 
    onStart() {
       Patcher.instead(UserProfileStore, 'getUserProfile', (self, args, res) => {
+         console.log('1');
          let result = res.apply(self, args);
-         if (true && result.themeColors) return result;
-            const colors = decode(result.bio);
-            if (colors) {
-               result.themeColors = colors;
-               result.premiumType = 2;
-            }
+         console.log('2');
+         if (true && result?.themeColors) return result;
+         console.log('3');
+         const colors = decode(result?.bio);
+         console.log('4');
+         if (colors) {
+            console.log('5');
+            result.themeColors = colors;
+            console.log('6');
+            result.premiumType = 2;
+         }
          return result;
       });
 
