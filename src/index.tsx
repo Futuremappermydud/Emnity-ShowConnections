@@ -38,8 +38,12 @@ const ShowConnections: Plugin = {
 
          const { userId } = profileCardSection?.find((r: any) => typeof r?.props?.displayProfile?.userId === "string")?.props?.displayProfile ?? {};
 
+         const connections = findInReactTree(res, r => 
+            r?.type?.displayName === "View" &&
+            r?.props?.children.findIndex(i => i?.type?.name === "UserProfileConnections") !== -1
+        );
 
-         profileCardSection.filter((val) => 
+        connections?.props?.children?.filter((val) => 
          {
             console.log(val?.props?.title);
             return val?.props?.title !== "Connections";
