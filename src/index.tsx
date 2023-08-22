@@ -8,6 +8,7 @@ import Settings from './components/Settings';
 
 const Patcher = create('show-connections');
 const UserProfile = getByProps("PRIMARY_INFO_TOP_OFFSET", "SECONDARY_INFO_TOP_MARGIN", "SIDE_PADDING")
+const UserProfileStore = getByProps("getUserProfile");
 import { findInReactTree } from "enmity/utilities"
 import Connections from './components/Connections';
 import { getBoolean } from 'enmity/api/settings';
@@ -34,9 +35,10 @@ const ShowConnections: Plugin = {
          if (!profileCardSection) return res;
 
          const { userId } = profileCardSection?.find((r: any) => typeof r?.props?.displayProfile?.userId === "string")?.props?.displayProfile ?? {};
-         const { bio } = profileCardSection?.find((r: any) => typeof r?.props?.displayProfile?.bio === "string")?.props?.bio ?? {};
-         console.log(bio.length);
-         console.log(bio);
+         
+         const profile = UserProfileStore.getUserProfile(userId);
+         console.log(profile.bio.length);
+         console.log(profile.bio);
 
          if(!getBoolean(manifest.name, "keepOg", false))
          {
