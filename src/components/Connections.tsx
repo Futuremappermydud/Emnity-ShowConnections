@@ -8,6 +8,7 @@ const { useThemeContext } = getByProps("useThemeContext");
 const { meta: { resolveSemanticColor } } = getByProps("colors", "meta");
 const UserProfileSection = getByName("UserProfileSection");
 const UserProfileStore = getByProps("getUserProfile");
+import { find, Asset } from 'enmity/api/assets'
 
 const styles = StyleSheet.createThemedStyleSheet({
     container: {
@@ -59,7 +60,7 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
     return (
         <Pressable 
             onPress={() => console.log("hi")}
-            style={(pressed) => {opacity: pressed ? 0.5 : 1}}
+            style={(pressed) => { opacity: {pressed ? 0.5 : 1}}}
         >
             <Image
                 accessibilityLabel={connection.name}
@@ -84,6 +85,15 @@ export default ({ userId, theme }: { userId: string, theme: string }) => {
     const connections: Connection[] = profile.connectedAccounts;
     if (!connections?.length)
         return null;
+
+    let icons: Asset[] = []
+    find(asset => { 
+        icons.push(asset); 
+        return false 
+    })
+    icons.forEach((asset)=> {
+        console.log(asset?.name);
+    });
 
     return <UserProfileSection title={theme}>
         <View style={{ flexDirection: 'row' }}>
