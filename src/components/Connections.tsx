@@ -68,7 +68,7 @@ interface Connection {
     verified: boolean;
 }
 
-function ConnectionComponent ({connection, userTheme, margin}: {connection: any, userTheme: string, margin: number}) {
+function ConnectionComponent ({connection, userTheme}: {connection: any, userTheme: string}) {
     let img = getIDByName(`img_account_sync_${connection.type.replace('riotgames', 'riot')}_light_and_dark`);
     if(!img)
     {
@@ -78,8 +78,7 @@ function ConnectionComponent ({connection, userTheme, margin}: {connection: any,
     {
         img = getIDByName(`ic_globe_24px`);
     }
-
-      console.log(margin);
+	
     return (
         <TouchableHighlight 
 			activeOpacity={0.45}
@@ -99,7 +98,6 @@ function ConnectionComponent ({connection, userTheme, margin}: {connection: any,
 					}
 				}
             }}
-			marginHorizontal={margin}
         >
 
             <Image
@@ -107,8 +105,7 @@ function ConnectionComponent ({connection, userTheme, margin}: {connection: any,
                 source={img}
                 style={{
                     width: 48,
-                    height: 48,
-					margin: {margin}
+                    height: 48
                 }}
             />
         </TouchableHighlight>
@@ -136,14 +133,13 @@ export default ({ userId, theme }: { userId: string, theme: string }) => {
       })();
 
     return <UserProfileSection title={"Connections"}>
-        <ScrollView horizontal={true} style={{ flexDirection: 'row', gap: {result}}}>
+        <ScrollView horizontal={true} style={{ flexDirection: 'row' }}>
             {
                 connections.map((connection: Connection)=> {
                     return (
                         <ConnectionComponent
 							connection={connection}
                             userTheme={theme}
-							margin={result}
                         />
                     )
                 })
