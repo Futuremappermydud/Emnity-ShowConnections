@@ -59,17 +59,15 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
     return (
         <Pressable 
             onPress={() => console.log("hi")}
+            style={(pressed) => {opacity: pressed ? 0.5 : 1}}
         >
             <Image
                 accessibilityLabel={connection.name}
                 source={img}
-                style={({pressed}) => [
-                    {
-                        width: 48,
-                        height: 48,
-                        backgroundColor: `rgba(0, 0, 0, ${pressed ? 0.6 : 1})`,
-                    }
-                ]}
+                style={{
+                    width: 32,
+                    height: 32
+                }}
             />
         </Pressable>
     );
