@@ -9,6 +9,8 @@ const { meta: { resolveSemanticColor } } = getByProps("colors", "meta");
 const UserProfileSection = getByName("UserProfileSection");
 const UserProfileStore = getByProps("getUserProfile");
 import { find, Asset } from 'enmity/api/assets'
+import Settings from "./Settings";
+import manifest from "../../manifest.json";
 
 const styles = StyleSheet.createThemedStyleSheet({
     container: {
@@ -55,13 +57,22 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
     {
         img = getIDByName(`img_account_sync_${connection.type.replace('riotgames', 'riot')}_${userTheme.replace('dark', 'white')}`);
     }
-
+    let size = get(manifest.name, "mode", "cozy");
+    let result = (()=>{
+        switch (size) {
+          case 'compact' : return 0;
+          case 'cozy' : return 5;
+          case 'roomy' : return 10;
+          case 'extreme' : return 15;
+          default : return 1;
+        }
+      })();
 
     return (
         <Pressable 
             onPress={() => console.log("hi")}
             style={{
-                margin: 15
+                marginRight: {result}
             }}
         >
 
