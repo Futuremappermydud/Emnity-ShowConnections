@@ -57,11 +57,6 @@ const URLS = [
 		"type": "spotify",
 		"url": "https://open.spotify.com/user/",
 		"usage": "id"
-	},
-	{
-		"type": "spotify",
-		"url": "https://open.spotify.com/user/",
-		"usage": "id"
 	}
 ]
 
@@ -83,6 +78,7 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
     {
         img = getIDByName(`ic_globe_24px`);
     }
+
     let size = get(manifest.name, "mode", "cozy");
     let result = (()=>{
         switch (size) {
@@ -106,7 +102,11 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
 				else
 				{
 					//Url base found, open link
-					Router.openURL(URLS.find(value => value.type == connection.type)?.url + connection.name);
+					const urlBase = URLS?.find(value => value.type == connection.type);
+					if(urlBase)
+					{
+						Router.openURL(urlBase?.url + urlBase?.usage == "name" ? connection.name : connection.id);
+					}
 				}
             }}
             style={{
