@@ -60,7 +60,9 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
     return (
         <Pressable 
             onPress={() => console.log("hi")}
-            style={(pressed) => { opacity: {pressed ? 0.5 : 1}}}
+            style={{
+                margin: 5
+            }}
         >
 
             <Image
@@ -98,7 +100,7 @@ export default ({ userId, theme }: { userId: string, theme: string }) => {
     });
 
     return <UserProfileSection title={theme}>
-        <ScrollView horizontal={true} style={{ flexDirection: 'row', gap: 5}}>
+        <ScrollView horizontal={true} style={{ flexDirection: 'row'}}>
             {
                 connections.map((connection: Connection)=> {
                     return (
