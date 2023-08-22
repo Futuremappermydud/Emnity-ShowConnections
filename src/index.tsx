@@ -10,6 +10,7 @@ const Patcher = create('show-connections');
 const UserProfile = getByProps("PRIMARY_INFO_TOP_OFFSET", "SECONDARY_INFO_TOP_MARGIN", "SIDE_PADDING")
 import { findInReactTree } from "enmity/utilities"
 import Connections from './components/Connections';
+import { getBoolean } from 'enmity/api/settings';
 
 function clearArray(array) {
    while (array.length > 0) {
@@ -37,9 +38,11 @@ const ShowConnections: Plugin = {
 
          const { userId } = profileCardSection?.find((r: any) => typeof r?.props?.displayProfile?.userId === "string")?.props?.displayProfile ?? {};
 
-         const index = profileCardSection.findIndex(key => key?.type?.name === "UserProfileConnections");
-
-         profileCardSection.splice(index, 1);
+         if(!getBoolean(manifest.name, "keepOg", false))
+         {
+            const index = profileCardSection.findIndex(key => key?.type?.name === "UserProfileConnections");
+            profileCardSection.splice(index, 1);
+         }
 
          profileCardSection.unshift(<Connections userId={userId} theme={userProfileTheme?.theme}/>)
 
