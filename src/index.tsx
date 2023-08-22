@@ -17,6 +17,13 @@ const ShowConnections: Plugin = {
    ...manifest,
 
    onStart() {
+      Patcher.instead(UserProfileStore.default, 'getUserProfile', (_, userId, res) => {
+         console.log(userId);
+         let result = res(userId);
+         console.log(JSON.stringify(result));
+         return result;
+      });
+
       Patcher.after(UserProfile.default, "type", (_, __, res) => {
          let profileCardSection = findInReactTree(res, r => 
              r?.type?.displayName === "View" &&
@@ -48,7 +55,7 @@ const ShowConnections: Plugin = {
 
          profileCardSection.unshift(<Connections userId={userId} theme={userProfileTheme?.theme}/>)
 
-     })
+     });
    },
 
    onStop() {
