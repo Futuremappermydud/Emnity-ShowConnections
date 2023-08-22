@@ -88,7 +88,8 @@ export default ({ userId, theme }: { userId: string, theme: string }) => {
 
     let icons: Asset[] = []
     find(asset => { 
-        icons.push(asset); 
+        if(asset?.name.startsWith("img_account"))
+            icons.push(asset); 
         return false 
     })
     icons.forEach((asset)=> {
