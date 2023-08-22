@@ -12,6 +12,12 @@ import { findInReactTree } from "enmity/utilities"
 import Connections from './components/Connections';
 import { json } from 'stream/consumers';
 
+function clearArray(array) {
+   while (array.length > 0) {
+     array.pop();
+   }
+ }
+
 const ShowConnections: Plugin = {
    ...manifest,
 
@@ -32,11 +38,7 @@ const ShowConnections: Plugin = {
 
          const { userId } = profileCardSection?.find((r: any) => typeof r?.props?.displayProfile?.userId === "string")?.props?.displayProfile ?? {};
 
-        profileCardSection.filter((val) => 
-         {
-            console.log(val?.type?.name + " " + val?.props?.title);
-            return val?.type?.name !== "UserProfileConnections";
-         });
+        clearArray(profileCardSection);
 
          profileCardSection.unshift(<Connections userId={userId} theme={userProfileTheme?.theme}/>)
 
