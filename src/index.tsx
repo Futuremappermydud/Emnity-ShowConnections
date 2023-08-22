@@ -30,9 +30,8 @@ const ShowConnections: Plugin = {
 
         const OGConnections = findInReactTree(res, r => 
          {
-            console.log(r?.type?.name);
-            console.log(r?.props?.title);
-            return r?.type?.name === "UserProfileSection" && r?.props?.title == "Connections";
+            console.log(r?.type?.name + " " + r?.props?.title);
+            return r?.type?.name === "UserProfileConnections"
          }
         );
 
@@ -45,11 +44,11 @@ const ShowConnections: Plugin = {
             r?.props?.children.findIndex(i => i?.type?.name === "UserProfileConnections") !== -1
         );
 
-        connections?.props?.children?.filter((val) => 
+        profileCardSection.filter((val) => 
          {
-            console.log(val?.type?.name);
             return val?.type?.name !== "UserProfileConnections";
          });
+
          profileCardSection.unshift(<Connections userId={userId} theme={userProfileTheme?.theme}/>)
 
      })
