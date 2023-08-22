@@ -79,7 +79,7 @@ function ConnectionComponent ({connection, userTheme, margin}: {connection: any,
         img = getIDByName(`ic_globe_24px`);
     }
 
-      console.log(result);
+      console.log(margin);
     return (
         <TouchableHighlight 
 			activeOpacity={0.45}
@@ -99,7 +99,7 @@ function ConnectionComponent ({connection, userTheme, margin}: {connection: any,
 					}
 				}
             }}
-			marginHorizontal={result}
+			marginHorizontal={margin}
         >
 
             <Image
@@ -108,7 +108,7 @@ function ConnectionComponent ({connection, userTheme, margin}: {connection: any,
                 style={{
                     width: 48,
                     height: 48,
-					margin: {result}
+					margin: {margin}
                 }}
             />
         </TouchableHighlight>
