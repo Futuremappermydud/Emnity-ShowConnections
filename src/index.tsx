@@ -17,9 +17,10 @@ const ShowConnections: Plugin = {
    ...manifest,
 
    onStart() {
-      Patcher.instead(UserProfileStore, 'getUserProfile', (_, userId, res) => {
-         console.log(userId);
-         let result = res(userId);
+      Patcher.instead(UserProfileStore, 'getUserProfile', (self, args, res) => {
+         console.log('hihihi');
+         console.log(JSON.stringify(args));
+         let result = res.apply(self, args);
          console.log(JSON.stringify(result));
          return result;
       });
