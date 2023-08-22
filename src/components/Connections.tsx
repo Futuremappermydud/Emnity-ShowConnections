@@ -1,48 +1,45 @@
 import { get } from "enmity/api/settings";
-import { Image, Pressable, ScrollView } from "enmity/components";
-import { Constants, React, StyleSheet } from "enmity/metro/common";
-import { getByName, getByProps } from "enmity/metro";
+import { Image, TouchableHighlight, ScrollView } from "enmity/components";
+import { React } from "enmity/metro/common";
+import { getByName, getByProps, bulk, filters } from "enmity/metro";
 import { getIDByName } from "enmity/api/assets"
 
-const { useThemeContext } = getByProps("useThemeContext");
-const { meta: { resolveSemanticColor } } = getByProps("colors", "meta");
 const UserProfileSection = getByName("UserProfileSection");
 const UserProfileStore = getByProps("getUserProfile");
-import { find, Asset } from 'enmity/api/assets'
-import Settings from "./Settings";
 import manifest from "../../manifest.json";
 
-const styles = StyleSheet.createThemedStyleSheet({
-    container: {
-        alignSelf: 'flex-start',
-        padding: 1,
-        borderRadius: 9,
-        width: "100%",
+const [
+    Router,
+    Clipboard,
+] = bulk(
+    filters.byProps('transitionToGuild', "openURL"),
+    filters.byProps('setString'),
+);
 
-        marginTop: -4,
-        marginRight: -12
-    },
-    innerContainer: {
-        paddingHorizontal: 6,
-        paddingVertical: 8,
-        overflow: "hidden",
-        flexDirection: "row",
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    circle: {
-        width: 10,
-        height: 10,
-        borderRadius: 10/2,
-        marginRight: 6
-    },
-    fallback: {
-        color: Constants.ThemeColorMap.BACKGROUND_SECONDARY_ALT
-    },
-    text: {
-        fontFamily: Constants.Fonts.DISPLAY_NORMAL,
-    }
-})
+//TODO Unhardcode URLS
+const URLS = [
+	{
+		"type": "domain",
+		"url": ""
+	},
+	{
+		"type": "twitter",
+		"url": "https://twitter.com/"
+	},
+	{
+		"type": "reddit",
+		"url": "https://www.reddit.com/user/"
+	},
+	{
+		"type": "github",
+		"url": "https://github.com/"
+	},
+	{
+		"type": "twitch",
+		"url": "https://www.twitch.tv/"
+	}
+]
+
 
 interface Connection {
     type: string;
@@ -74,29 +71,37 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
 
       console.log(result);
     return (
-        <Pressable 
-            onPress={() => console.log("hi")}
+        <TouchableHighlight 
+            onPress={() => {
+				if(URLS.findIndex(value => value.type == connection.type) == -1)
+				{
+					//No url base found, copy
+					Clipboard.setString(connection.name);
+				}
+				else
+				{
+					//Url base found, open link
+					Router.openURL(URLS.find(value => value.type == connection.type)?.url + connection.name);
+				}
+            }}
             style={{
-                marginRight: {result}
+                margin: {result}
             }}
         >
 
             <Image
-                accessibilityLabel={connection.name}
+                accessibilityLabel={connection.type}
                 source={img}
                 style={{
                     width: 48,
                     height: 48
                 }}
             />
-        </Pressable>
+        </TouchableHighlight>
     );
 }
 
 export default ({ userId, theme }: { userId: string, theme: string }) => {
-    const themeContext = useThemeContext();
-    const textColor = resolveSemanticColor(themeContext.theme, Constants.ThemeColorMap.TEXT_NORMAL);
-
     const profile = UserProfileStore.getUserProfile(userId);
     if (!profile)
         return null;
@@ -110,7 +115,8 @@ export default ({ userId, theme }: { userId: string, theme: string }) => {
             {
                 connections.map((connection: Connection)=> {
                     return (
-                        <ConnectionComponent connection={connection}
+                        <ConnectionComponent
+							connection={connection}
                             userTheme={theme}
                         />
                     )

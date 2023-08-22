@@ -1,4 +1,4 @@
-import { FormInput, FormRadio, FormRow, FormSelect, ScrollView, View } from 'enmity/components';
+import { FormSwitch, FormRadio, FormRow, FormSelect, ScrollView, View } from 'enmity/components';
 import { get, getBoolean, set, SettingsStore } from 'enmity/api/settings';
 import { React, StyleSheet, Constants } from 'enmity/metro/common';
 import Credits from './Credits';
@@ -65,9 +65,9 @@ export default ({ settings }: SettingsProps) => {
              }}
          />
          <FormRow
-            label="Icon Size"
-            subLabel="Changes the size of connection icons"
-            trailing={<FormInput value={get(manifest.name, "iconSize", "32")} onChange={(value)=>{set(manifest.name, "iconSize", value.replace(/\D/g,''));}} />}
+            label="Keep Original Connections"
+            subLabel="Whether to keep the original connections in popout or to hide them"
+            trailing={<FormSwitch value={getBoolean(manifest.name, "keepOg", false)} onChange={(value)=>{set(manifest.name, "keepOg", value);}} />}
          />
       </View>
    </ScrollView>;

@@ -60,11 +60,9 @@ const styles = StyleSheet.createThemedStyleSheet({
 const Animated = window.enmity.modules.common.Components.General.Animated
 
 const [
-    Router,
-    Clipboard,
+    Router
 ] = bulk(
-    filters.byProps('transitionToGuild', "openURL"),
-    filters.byProps('setString'),
+    filters.byProps('transitionToGuild', "openURL")
 );
 
 export default ({ manifest }: CreditsProps) => {

@@ -10,8 +10,6 @@ const Patcher = create('show-connections');
 const UserProfile = getByProps("PRIMARY_INFO_TOP_OFFSET", "SECONDARY_INFO_TOP_MARGIN", "SIDE_PADDING")
 import { findInReactTree } from "enmity/utilities"
 import Connections from './components/Connections';
-import { json } from 'stream/consumers';
-import { ApplicationCommandPermissionType } from 'enmity/api/commands';
 
 function clearArray(array) {
    while (array.length > 0) {
