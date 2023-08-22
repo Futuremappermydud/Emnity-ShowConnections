@@ -30,6 +30,8 @@ const ShowConnections: Plugin = {
 
         const OGConnections = findInReactTree(res, r => 
          {
+            console.log(r?.type?.name);
+            console.log(r?.props?.title);
             return r?.type?.name === "UserProfileSection" && r?.props?.title == "Connections";
          }
         );

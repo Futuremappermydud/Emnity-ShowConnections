@@ -52,10 +52,16 @@ interface Connection {
 }
 
 function ConnectionComponent ({connection, userTheme}: {connection: any, userTheme: string}) {
+    console.log(connection.type);
+
     let img = getIDByName(`img_account_sync_${connection.type.replace('riotgames', 'riot')}_light_and_dark`);
     if(!img)
     {
         img = getIDByName(`img_account_sync_${connection.type.replace('riotgames', 'riot')}_${userTheme.replace('dark', 'white')}`);
+    }
+    if(connection.type === "domain")
+    {
+        img = getIDByName(`ic_globe_24px`);
     }
     let size = get(manifest.name, "mode", "cozy");
     let result = (()=>{
