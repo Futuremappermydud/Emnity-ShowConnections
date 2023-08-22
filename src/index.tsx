@@ -28,7 +28,8 @@ const ShowConnections: Plugin = {
             if(r?.type?.name === "ThemeContextProvider")
             {
                console.log("found");
-               console.log(JSON.stringify(r?.props));
+               const { children, ...props } = r?.props
+               console.log(JSON.stringify(props));
                return true;
             }
             return false;
