@@ -1,5 +1,5 @@
 import { get } from "enmity/api/settings";
-import { Image, TouchableHighlight, ScrollView } from "enmity/components";
+import { Image, TouchableHighlight, ScrollView, View } from "enmity/components";
 import { React } from "enmity/metro/common";
 import { getByName, getByProps, bulk, filters } from "enmity/metro";
 import { getIDByName } from "enmity/api/assets"
@@ -33,11 +33,9 @@ function ConnectionComponent ({connection, userTheme}: {connection: any, userThe
     let platform = platforms.get(connection.type);
     let url = platform.getPlatformUserUrl?.(connection);
     let img = userTheme === "light" ? platform.icon.lightSVG : platform.icon.darkSVG;
-    console.log(img);
     //hack
     var y: number = +img;
     img = ""+(y - 2);
-    console.log(" -" + img + "-");
 	
     return (
         <TouchableHighlight 
@@ -87,7 +85,16 @@ export default ({ userId, theme }: { userId: string, theme: string }) => {
       })();
 
     return <UserProfileSection title={"Connections"}>
-        <ScrollView horizontal={true} style={{ flexDirection: 'row' }}>
+        <ScrollView 
+            horizontal={true} 
+            style={{ flexDirection: 'row' }}
+        >
+            <View
+                style={{ 
+                    flexDirection: 'row',
+                    gap: result
+                }}
+            >
             {
                 connections.map((connection: Connection)=> {
                     return (
@@ -98,6 +105,7 @@ export default ({ userId, theme }: { userId: string, theme: string }) => {
                     )
                 })
             }
+            </View>
         </ScrollView>
     </UserProfileSection>
 }
