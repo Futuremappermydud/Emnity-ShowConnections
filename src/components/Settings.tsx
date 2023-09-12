@@ -64,11 +64,6 @@ export default ({ settings }: SettingsProps) => {
                set(manifest.name, "mode", "extreme");;
              }}
          />
-         <FormRow
-            label="Keep Original Connections"
-            subLabel="Whether to keep the original connections in popout or to hide them"
-            trailing={<FormSwitch value={getBoolean(manifest.name, "keepOg", false)} onChange={(value)=>{set(manifest.name, "keepOg", value);}} />}
-         />
       </View>
    </ScrollView>;
 };
